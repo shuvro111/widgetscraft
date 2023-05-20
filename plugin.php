@@ -1,5 +1,5 @@
 <?php
-namespace ElementorHelloWorld;
+namespace WidgetsCraft;
 
 use ElementorHelloWorld\PageSettings\Page_Settings;
 
@@ -40,6 +40,17 @@ class Plugin {
 	}
 
 	/**
+	 * widget_styles
+	 *
+	 * Load required plugin core files.
+	 *
+	 * @since 1.2.0
+	 * @access public
+	 */
+	public function widget_styles() {
+		wp_register_style( 'donut-chart', plugins_url( '/assets/css/donut-chart.css', __FILE__ ), [], false, true );
+	}
+	/**
 	 * widget_scripts
 	 *
 	 * Load required plugin core files.
@@ -48,7 +59,7 @@ class Plugin {
 	 * @access public
 	 */
 	public function widget_scripts() {
-		wp_register_script( 'elementor-hello-world', plugins_url( '/assets/js/hello-world.js', __FILE__ ), [ 'jquery' ], false, true );
+		wp_register_script( 'donut-chart', plugins_url( '/assets/js/donut-chart.js', __FILE__ ), [ 'jquery' ], false, true );
 	}
 
 	/**
@@ -103,12 +114,10 @@ class Plugin {
 	 */
 	public function register_widgets( $widgets_manager ) {
 		// Its is now safe to include Widgets files
-		require_once( __DIR__ . '/widgets/hello-world.php' );
-		require_once( __DIR__ . '/widgets/inline-editing.php' );
+		require_once( __DIR__ . '/widgets/donut-chart.php' );
 
 		// Register Widgets
-		$widgets_manager->register( new Widgets\Hello_World() );
-		$widgets_manager->register( new Widgets\Inline_Editing() );
+		$widgets_manager->register( new Widgets\Donut_Chart() );
 	}
 
 	/**
@@ -133,6 +142,9 @@ class Plugin {
 	 * @access public
 	 */
 	public function __construct() {
+
+		// Register widget styles
+		add_action( 'elementor/frontend/after_register_styles', [ $this, 'widget_styles' ] );
 
 		// Register widget scripts
 		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
