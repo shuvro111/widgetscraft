@@ -9,7 +9,8 @@ use ElementorHelloWorld\PageSettings\Page_Settings;
  * Main Plugin class
  * @since 1.2.0
  */
-class Plugin {
+class Plugin
+{
 
 	/**
 	 * Instance
@@ -32,8 +33,9 @@ class Plugin {
 	 *
 	 * @return Plugin An instance of the class.
 	 */
-	public static function instance() {
-		if ( is_null( self::$_instance ) ) {
+	public static function instance()
+	{
+		if (is_null(self::$_instance)) {
 			self::$_instance = new self();
 		}
 		return self::$_instance;
@@ -47,8 +49,9 @@ class Plugin {
 	 * @since 1.2.0
 	 * @access public
 	 */
-	public function widget_styles() {
-		wp_register_style( 'donut-chart', plugins_url( '/assets/css/donut-chart.css', __FILE__ ) );
+	public function widget_styles()
+	{
+		wp_register_style('donut-chart', plugins_url('/assets/css/donut-chart.css', __FILE__));
 	}
 	/**
 	 * widget_scripts
@@ -58,11 +61,12 @@ class Plugin {
 	 * @since 1.2.0
 	 * @access public
 	 */
-	public function widget_scripts() {
+	public function widget_scripts()
+	{
 		wp_register_script('amcharts-core', 'https://cdn.amcharts.com/lib/4/core.js', ['jquery', 'elementor-frontend'], false, true);
 		wp_register_script('amcharts-charts', 'https://cdn.amcharts.com/lib/4/charts.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_register_script('amcharts-3d', 'https://cdn.amcharts.com/lib/4/themes/animated.js', ['jquery', 'elementor-frontend'],false, true);
-		wp_register_script( 'donut-chart', plugins_url( '/assets/js/donut-chart.js', __FILE__ ), ['jquery', 'elementor-frontend'], false, true );
+		wp_register_script('amcharts-3d', 'https://cdn.amcharts.com/lib/4/themes/animated.js', ['jquery', 'elementor-frontend'], false, true);
+		wp_register_script('donut-chart', plugins_url('/assets/js/donut-chart.js', __FILE__), ['jquery', 'elementor-frontend'], false, true);
 	}
 
 	/**
@@ -73,12 +77,13 @@ class Plugin {
 	 * @since 1.2.1
 	 * @access public
 	 */
-	public function editor_scripts() {
-		add_filter( 'script_loader_tag', [ $this, 'editor_scripts_as_a_module' ], 10, 2 );
+	public function editor_scripts()
+	{
+		add_filter('script_loader_tag', [$this, 'editor_scripts_as_a_module'], 10, 2);
 
 		wp_enqueue_script(
 			'elementor-hello-world-editor',
-			plugins_url( '/assets/js/editor/editor.js', __FILE__ ),
+			plugins_url('/assets/js/editor/editor.js', __FILE__),
 			[
 				'elementor-editor',
 			],
@@ -97,9 +102,10 @@ class Plugin {
 	 *
 	 * @return string
 	 */
-	public function editor_scripts_as_a_module( $tag, $handle ) {
-		if ( 'elementor-hello-world-editor' === $handle ) {
-			$tag = str_replace( '<script', '<script type="module"', $tag );
+	public function editor_scripts_as_a_module($tag, $handle)
+	{
+		if ('elementor-hello-world-editor' === $handle) {
+			$tag = str_replace('<script', '<script type="module"', $tag);
 		}
 
 		return $tag;
@@ -115,12 +121,15 @@ class Plugin {
 	 *
 	 * @param Widgets_Manager $widgets_manager Elementor widgets manager.
 	 */
-	public function register_widgets( $widgets_manager ) {
+	public function register_widgets($widgets_manager)
+	{
 		// Its is now safe to include Widgets files
-		require_once( __DIR__ . '/widgets/donut-chart.php' );
+		require_once(__DIR__ . '/widgets/donut-chart.php');
+		require_once(__DIR__ . '/widgets/column-chart.php');
 
 		// Register Widgets
-		$widgets_manager->register( new Widgets\Donut_Chart() );
+		$widgets_manager->register(new Widgets\Donut_Chart());
+		$widgets_manager->register(new Widgets\ColumnChart());
 	}
 
 	/**
@@ -131,8 +140,9 @@ class Plugin {
 	 * @since 1.2.1
 	 * @access private
 	 */
-	private function add_page_settings_controls() {
-		require_once( __DIR__ . '/page-settings/manager.php' );
+	private function add_page_settings_controls()
+	{
+		require_once(__DIR__ . '/page-settings/manager.php');
 		new Page_Settings();
 	}
 
@@ -144,20 +154,21 @@ class Plugin {
 	 * @since 1.2.0
 	 * @access public
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
 		// Register widget styles
-		add_action( 'elementor/frontend/after_register_styles', [ $this, 'widget_styles' ] );
+		add_action('elementor/frontend/after_register_styles', [$this, 'widget_styles']);
 
 		// Register widget scripts
-		add_action( 'elementor/frontend/after_register_scripts', [ $this, 'widget_scripts' ] );
+		add_action('elementor/frontend/after_register_scripts', [$this, 'widget_scripts']);
 
 		// Register widgets
-		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
+		add_action('elementor/widgets/register', [$this, 'register_widgets']);
 
 		// Register editor scripts
-		add_action( 'elementor/editor/after_enqueue_scripts', [ $this, 'editor_scripts' ] );
-		
+		add_action('elementor/editor/after_enqueue_scripts', [$this, 'editor_scripts']);
+
 		$this->add_page_settings_controls();
 	}
 }
