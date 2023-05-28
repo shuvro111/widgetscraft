@@ -4,7 +4,8 @@ namespace ElementorHelloWorld\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if (!defined('ABSPATH'))
+	exit; // Exit if accessed directly
 
 /**
  * Elementor Hello World
@@ -13,7 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @since 1.0.0
  */
-class Hello_World extends Widget_Base {
+class Hello_World extends Widget_Base
+{
 
 	/**
 	 * Retrieve the widget name.
@@ -24,7 +26,8 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+	{
 		return 'hello-world';
 	}
 
@@ -37,8 +40,9 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title() {
-		return __( 'Hello World', 'elementor-hello-world' );
+	public function get_title()
+	{
+		return __('Hello World', 'elementor-hello-world');
 	}
 
 	/**
@@ -50,8 +54,9 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon() {
-		return 'eicon-posts-ticker';
+	public function get_icon()
+	{
+		return 'eicon-posts-ticker widgets-craft-widget-panel-icon';
 	}
 
 	/**
@@ -68,8 +73,9 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories() {
-		return [ 'general' ];
+	public function get_categories()
+	{
+		return ['general'];
 	}
 
 	/**
@@ -83,8 +89,9 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @return array Widget scripts dependencies.
 	 */
-	public function get_script_depends() {
-		return [ 'elementor-hello-world' ];
+	public function get_script_depends()
+	{
+		return ['elementor-hello-world'];
 	}
 
 	/**
@@ -96,18 +103,19 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function register_controls() {
+	protected function register_controls()
+	{
 		$this->start_controls_section(
 			'section_content',
 			[
-				'label' => __( 'Content', 'elementor-hello-world' ),
+				'label' => __('Content', 'elementor-hello-world'),
 			]
 		);
 
 		$this->add_control(
 			'title',
 			[
-				'label' => __( 'Title', 'elementor-hello-world' ),
+				'label' => __('Title', 'elementor-hello-world'),
 				'type' => Controls_Manager::TEXT,
 			]
 		);
@@ -117,7 +125,7 @@ class Hello_World extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			[
-				'label' => __( 'Style', 'elementor-hello-world' ),
+				'label' => __('Style', 'elementor-hello-world'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -125,14 +133,14 @@ class Hello_World extends Widget_Base {
 		$this->add_control(
 			'text_transform',
 			[
-				'label' => __( 'Text Transform', 'elementor-hello-world' ),
+				'label' => __('Text Transform', 'elementor-hello-world'),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'' => __( 'None', 'elementor-hello-world' ),
-					'uppercase' => __( 'UPPERCASE', 'elementor-hello-world' ),
-					'lowercase' => __( 'lowercase', 'elementor-hello-world' ),
-					'capitalize' => __( 'Capitalize', 'elementor-hello-world' ),
+					'' => __('None', 'elementor-hello-world'),
+					'uppercase' => __('UPPERCASE', 'elementor-hello-world'),
+					'lowercase' => __('lowercase', 'elementor-hello-world'),
+					'capitalize' => __('Capitalize', 'elementor-hello-world'),
 				],
 				'selectors' => [
 					'{{WRAPPER}} .title' => 'text-transform: {{VALUE}};',
@@ -152,7 +160,8 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function render() {
+	protected function render()
+	{
 		$settings = $this->get_settings_for_display();
 
 		echo '<div class="title">';
@@ -169,7 +178,8 @@ class Hello_World extends Widget_Base {
 	 *
 	 * @access protected
 	 */
-	protected function content_template() {
+	protected function content_template()
+	{
 		?>
 		<div class="title">
 			{{{ settings.title }}}
