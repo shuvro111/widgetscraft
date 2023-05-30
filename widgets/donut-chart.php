@@ -3,7 +3,6 @@
 namespace WidgetsCraft\Widgets;
 
 use Elementor\Widget_Base;
-use Elementor\Controls_Manager;
 
 if (!defined('ABSPATH'))
 	exit; // Exit if accessed directly
@@ -74,7 +73,7 @@ class Donut_Chart extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-posts-ticker';
+		return 'eicon-posts-ticker widgets-craft-widget-panel-icon';
 	}
 
 	/**
@@ -93,7 +92,7 @@ class Donut_Chart extends Widget_Base
 	 */
 	public function get_categories()
 	{
-		return ['general'];
+		return ['widgets-craft'];
 	}
 
 	/**
@@ -210,7 +209,7 @@ class Donut_Chart extends Widget_Base
 		$this->add_control(
 			'disable_label_toggle',
 			[
-				'label' => 'Disable Label Toggle',
+				'label' => 'Disable Label',
 				'type' => \Elementor\Controls_Manager::SWITCHER,
 				'label_on' => 'Yes',
 				'label_off' => 'No',
@@ -653,10 +652,10 @@ class Donut_Chart extends Widget_Base
 							return data.color;
 						});
 
-						if ('<?php echo $settings['label_visibility_toggle']; ?>' === 'yes') {
-							series.labels.template.disabled = false;
-						} else {
+						if ('<?php echo $settings['disable_label_toggle']; ?>' === 'yes') {
 							series.labels.template.disabled = true;
+						} else {
+							series.labels.template.disabled = false;
 						}
 
 						series.slices.template.propertyFields.fill = "color";
