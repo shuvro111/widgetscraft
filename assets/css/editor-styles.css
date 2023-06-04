@@ -1,0 +1,35 @@
+.elementor-panel-category-items .widgets-craft-widget-panel-icon {
+    margin-top: 10px;
+}
+
+.elementor-panel-category-items .widgets-craft-widget-panel-icon::after {
+    content: 'WIDGETS CRAFT';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #ffffff;
+    font-size: 10px;
+    background-color: #611aae;
+    font-weight: 600;
+    padding: 3px 5px;
+    line-height: 10px;
+    display: inline-block;
+    border-radius: 2px;
+    font-family: "Open Sans", Roboto, Helvetica, Arial, sans-serif
+}
+
+.elementor-navigator__item .widgets-craft-widget-panel-icon::after {
+    content: 'WC';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: #ffffff;
+    font-size: 10px;
+    background-color: #611aae;
+    font-weight: 600;
+    padding: 3px 5px;
+    line-height: 10px;
+    display: inline-block;
+    border-radius: 2px;
+    font-family: "Open Sans", Roboto, Helvetica, Arial, sans-serif
+}
