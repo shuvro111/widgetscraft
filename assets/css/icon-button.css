@@ -1,0 +1,58 @@
+.widgets-craft-icon-button .link {
+    font-size: 18px;
+    font-weight: 600;
+    width: max-content;
+    padding: 0 1.5em;
+    height: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.widgets-craft-icon-button .link::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #731ED0;
+    border-radius: 500px;
+    z-index: -1;
+}
+
+.widgets-craft-icon-button .link span.icon {
+    display: flex;
+    align-items: center;
+}
+
+.widgets-craft-icon-button .link:hover {
+    color: #731ED0;
+}
+
+.widgets-craft-icon-button .link:hover span.text {
+    transform: translateX(-5px);
+}
+
+.widgets-craft-icon-button .link:hover span.icon {
+    color: #ffffff;
+    transform: translateX(12px);
+}
+
+.widgets-craft-icon-button .link,
+.widgets-craft-icon-button .link::before,
+.widgets-craft-icon-button span.text,
+.widgets-craft-icon-button span.icon {
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.widgets-craft-icon-button .link:hover::before {
+    width: 40px;
+    height: 40px;
+    transform: translateY(5px);
+}
