@@ -454,6 +454,237 @@ class Line_Chart extends Widget_Base
             ]
         );
 
+        // Grid opacity
+        $this->add_control(
+            'chart_grid_opacity',
+            [
+                'label' => 'Grid Opacity',
+                'description' => 'Grid opacity. Value range is 0 - 1.',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    ''
+                ],
+                'range' => [
+                    '' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.1
+                    ]
+                ],
+                'default' => [
+                    'unit' => '',
+                    'size' => 0.8,
+                ],
+
+            ]
+        );
+
+        // X Axis Label Rotation
+        $this->add_control(
+            'chart_x_axis_label_rotation',
+            [
+                'label' => 'X Axis Label Rotation',
+                'description' => 'X axis label rotation angle. Valid values are from -360 to 360.',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    ''
+                ],
+                'range' => [
+                    '' => [
+                        'min' => -360,
+                        'max' => 360,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => '',
+                    'size' => 0,
+                ],
+
+            ]
+        );
+
+        // Y Axis Label Rotation
+        $this->add_control(
+            'chart_y_axis_label_rotation',
+            [
+                'label' => 'Y Axis Label Rotation',
+                'description' => 'Y axis label rotation angle. Valid values are from -360 to 360.',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    ''
+                ],
+                'range' => [
+                    '' => [
+                        'min' => -360,
+                        'max' => 360,
+                        'step' => 1
+                    ]
+                ],
+                'default' => [
+                    'unit' => '',
+                    'size' => 0,
+                ],
+
+            ]
+        );
+
+
+        //typography
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'chart_label_typography',
+                'label' => 'Label Typography',
+                'selector' => '{{WRAPPER}}',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        //Section Line Chart Styles
+        $this->start_controls_section(
+            'section_line_chart_styles',
+            [
+                'label' => 'Line Chart Styles',
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        //line_chart stroke color
+        $this->add_control(
+            'line_chart_stroke_color',
+            [
+                'label' => 'Stroke Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#67b7dc',
+            ]
+        );
+
+        //line_chart stroke width
+        $this->add_control(
+            'line_chart_stroke_width',
+            [
+                'label' => 'Stroke Width',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    'px'
+                ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ]
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 2,
+                ],
+            ]
+        );
+
+        //line_chart bullet background color
+        $this->add_control(
+            'line_chart_bullet_background_color',
+            [
+                'label' => 'Bullet Background Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+            ]
+        );
+
+        //line_chart background color
+        $this->add_control(
+            'line_chart_background_color',
+            [
+                'label' => 'Background Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#67b7dc',
+            ]
+        );
+
+        //line_chart background opacity
+        $this->add_control(
+            'line_chart_background_opacity',
+            [
+                'label' => 'Background Opacity',
+                'description' => 'Background opacity. Value range is 0 - 1.',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    ''
+                ],
+                'range' => [
+                    '' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.1
+                    ]
+                ],
+                'default' => [
+                    'unit' => '',
+                    'size' => 0.8,
+                ],
+
+            ]
+        );
+
+        //line_chart smoothness
+        $this->add_control(
+            'line_chart_smoothness',
+            [
+                'label' => 'Smoothness',
+                'description' => 'Tension of the line. 0 - no smoothing. 1 - very smooth.',
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [
+                    ''
+                ],
+                'range' => [
+                    '' => [
+                        'min' => 0,
+                        'max' => 1,
+                        'step' => 0.1
+                    ]
+                ],
+                'default' => [
+                    'unit' => '',
+                    'size' => 0.8,
+                ],
+
+            ]
+        );
+
+
+        $this->end_controls_section();
+
+        //Section Tooltip Styles
+        $this->start_controls_section(
+            'section_tooltip_styles',
+            [
+                'label' => 'Tooltip Styles',
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        //tooltip background color
+        $this->add_control(
+            'tooltip_background_color',
+            [
+                'label' => 'Background Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#000000',
+            ]
+        );
+
+        //tooltip font color
+        $this->add_control(
+            'tooltip_text_color',
+            [
+                'label' => 'Font Color',
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+            ]
+        );
+
         $this->end_controls_section();
     }
 
