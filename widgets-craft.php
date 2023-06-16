@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Widgets Craft
- * Description: Bunch of useful widgets for elementor page builder.
+ * Description: A bunch of useful widgets for elementor page builder.
  * Plugin URI:  https://shuvrosarkar.com/
  * Version:     1.2.1
  * Author:      Shuvro Sarkar
