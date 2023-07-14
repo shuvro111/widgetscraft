@@ -91,6 +91,7 @@ class Icon_Button extends Widget_Base
      */
     public function get_style_depends()
     {
+        wp_register_style('icon-button', plugins_url('/assets/css/icon-button.css', __FILE__));
         return ['icon-button'];
     }
 
