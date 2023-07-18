@@ -66,36 +66,7 @@ class Plugin
 		wp_enqueue_style('widgets-craft-editor-scripts', plugins_url('assets/css/editor-script.js', __FILE__));
 	}
 
-	/**
-	 * widget_styles
-	 *
-	 * Load required plugin core files.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 */
-	public function widget_styles()
-	{
-		wp_register_style('donut-chart', plugins_url('/assets/css/donut-chart.css', __FILE__));
-		wp_register_style('advanced-accordion', plugins_url('/assets/css/advanced-accordion.css', __FILE__));
-		wp_register_style('icon-button', plugins_url('/assets/css/icon-button.css', __FILE__));
-	}
-	/**
-	 * widget_scripts
-	 *
-	 * Load required plugin core files.
-	 *
-	 * @since 1.2.0
-	 * @access public
-	 */
-	public function widget_scripts()
-	{
-		wp_register_script('amcharts-core', 'https://cdn.amcharts.com/lib/4/core.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_register_script('amcharts-charts', 'https://cdn.amcharts.com/lib/4/charts.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_register_script('amcharts-3d', 'https://cdn.amcharts.com/lib/4/themes/animated.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_register_script('donut-chart', plugins_url('/assets/js/donut-chart.js', __FILE__), ['jquery', 'elementor-frontend'], false, true);
-		wp_register_script('advanced-accordion', plugins_url('/assets/js/advanced-accordion.js', __FILE__), ['jquery', 'elementor-frontend'], false, true);
-	}
+
 
 	/**
 	 * Force load editor script as a module
@@ -151,13 +122,11 @@ class Plugin
 		require_once(__DIR__ . '/widgets/donut-chart.php');
 		require_once(__DIR__ . '/widgets/column-chart.php');
 		require_once(__DIR__ . '/widgets/line-chart.php');
-		require_once(__DIR__ . '/widgets/advanced-accordion.php');
 		require_once(__DIR__ . '/widgets/icon-button.php');
 
 		// Register Widgets
 		$widgets_manager->register(new Widgets\Donut_Chart());
 		$widgets_manager->register(new Widgets\Column_Chart());
-		$widgets_manager->register(new Widgets\Advanced_Accordion());
 		$widgets_manager->register(new Widgets\Line_Chart());
 	}
 
@@ -187,13 +156,6 @@ class Plugin
 	{
 		// Register category
 		add_action('elementor/elements/categories_registered', [$this, 'add_widgetscraft_category']);
-
-
-		// Register widget styles
-		add_action('elementor/frontend/after_register_styles', [$this, 'widget_styles']);
-
-		// Register widget scripts
-		add_action('elementor/frontend/after_register_scripts', [$this, 'widget_scripts']);
 
 		// Register widgets
 		add_action('elementor/widgets/register', [$this, 'register_widgets']);
