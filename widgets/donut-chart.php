@@ -16,24 +16,6 @@ if (!defined('ABSPATH'))
  */
 class Donut_Chart extends Widget_Base
 {
-
-	public function __construct($data = [], $args = null)
-	{
-		parent::__construct($data, $args);
-
-		add_action('elementor/frontend/after_enqueue_scripts', [$this, 'widget_scripts']);
-	}
-
-	public function widget_scripts()
-	{
-		wp_enqueue_script('amcharts-core', 'https://cdn.amcharts.com/lib/4/core.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_enqueue_script('amcharts-charts', 'https://cdn.amcharts.com/lib/4/charts.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_enqueue_script('amcharts-3d', 'https://cdn.amcharts.com/lib/4/themes/animated.js', ['jquery', 'elementor-frontend'], false, true);
-		wp_enqueue_script('donut-chart', plugins_url('/assets/js/donut-chart.js', __FILE__), ['jquery', 'elementor-frontend'], false, true);
-
-		wp_register_style('donut-chart', plugins_url('/assets/css/donut-chart.css', __FILE__), [], false, 'all');
-	}
-
 	/**
 	 * Retrieve the widget name.
 	 *
@@ -108,6 +90,8 @@ class Donut_Chart extends Widget_Base
 	 */
 	public function get_style_depends()
 	{
+		wp_register_style('donut-chart', plugins_url('/assets/css/donut-chart.css', __FILE__));
+
 		return ['donut-chart'];
 	}
 	/**
@@ -123,6 +107,11 @@ class Donut_Chart extends Widget_Base
 	 */
 	public function get_script_depends()
 	{
+		wp_register_script('amcharts-core', 'https://cdn.amcharts.com/lib/4/core.js', ['jquery', 'elementor-frontend'], false, true);
+		wp_register_script('amcharts-charts', 'https://cdn.amcharts.com/lib/4/charts.js', ['jquery', 'elementor-frontend'], false, true);
+		wp_register_script('amcharts-3d', 'https://cdn.amcharts.com/lib/4/themes/animated.js', ['jquery', 'elementor-frontend'], false, true);
+		wp_register_script('donut-chart', plugins_url('/assets/js/donut-chart.js', __FILE__), ['jquery', 'elementor-frontend'], false, true);
+
 		return ['amcharts-core', 'amcharts-charts', 'amcharts-3d', 'donut-chart'];
 	}
 
